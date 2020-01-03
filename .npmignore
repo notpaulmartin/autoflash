@@ -1,0 +1,20 @@
+# VS Code
+.vscode
+.eslint*
+
+# Git
+.git
+.gitignore
+
+# node
+node_modules
+
+# npm postinstall
+esptool
+
+# npm pack
+autoflash*.tgz
+package
+
+# Custom
+afl_files

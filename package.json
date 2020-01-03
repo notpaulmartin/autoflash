@@ -1,0 +1,25 @@
+{
+  "name": "autoflash",
+  "version": "1.1.2",
+  "description": "One command to flash an ESP8266 in no time (nodemcu + arduino)",
+  "scripts": {
+    "postinstall": "wget https://github.com/espressif/esptool/archive/v2.8.zip && unzip v2.8.zip && rm v2.8.zip && mv esptool-2.8 esptool"
+  },
+  "author": "Paul Martin",
+  "homepage": "https://github.com/notpaulmartin/autoflash#readme",
+  "license": "GPL-2.0",
+  "bin": {
+    "autoflash": "bin/autoflash.js"
+  },
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "serialport": "^7.1.5"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-prettier": "^3.1.2"
+  }
+}
