@@ -4,7 +4,7 @@
 
 **_Flash an ESP8266 in no time (nodemcu &amp; arduino)_**
 
-![npm](https://img.shields.io/npm/v/autoflash)
+[![npm](https://img.shields.io/npm/v/autoflash)](https://www.npmjs.com/package/autoflash)
 
 In building build-yours.com, a company developing and selling products based on ESP8266s, a large problem we encountered was \
 _How do you flash a large number of chips with little effort in a short amount time?_
