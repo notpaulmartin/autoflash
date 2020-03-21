@@ -4,8 +4,8 @@
  * File Created:  Sunday, 29th December 2019 5:59:36 pm
  * Author(s):     Paul Martin
  *
- * Last Modified: Friday, 3rd January 2020 11:53:51 am
- * Modified By:   Paul Martin (paul@blibspace.com)
+ * Last Modified: Saturday, 21st March 2020 1:16:33 pm
+ * Modified By:   Paul Martin
  *
  * Description:   Interprets commands from CLI and executes the corresponding functions
  */
@@ -117,13 +117,15 @@ const commands = {
   },
 
   'download\\b *([\\w.-/]*)': async function(
-    [filename = 'backup.afl'],
+    [filename],
     { port: portFlag, chipSize = 4 },
     verbose = false
   ) {
     // if no port specified, then automatically select one
     const port = portFlag || (await getPort());
     if (port === undefined) throw 'no port found';
+
+    filename = filename || 'backup.afl';
 
     console.log(`** downloading from port ${port} ...`);
 

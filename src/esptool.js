@@ -4,15 +4,17 @@
  * File Created:  Sunday, 29th December 2019 12:31:49 pm
  * Author(s):     Paul Martin
  *
- * Last Modified: Thursday, 2nd January 2020 7:00:23 pm
- * Modified By:   Paul Martin (paul@blibspace.com)
+ * Last Modified: Saturday, 21st March 2020 1:10:21 pm
+ * Modified By:   Paul Martin
  *
  * Description:   Controls esptool.py using JS
  */
 
 const path = require('path');
+const process = require('process');
 const { spawn } = require('child_process');
 
+const cwd = process.cwd();
 const esptoolPath = path.join(__dirname, '../esptool/esptool.py');
 const readBaud = 115200;
 // const write_baud = 460800;
@@ -41,9 +43,12 @@ const esptool = (params, verbose = false) =>
     }
   });
 
-function download(port, chipSize, filename, verbose = false) {
+function download(port, chipSize, filename = 'backup.afl', verbose = false) {
   // chip_size in MB
   const readUntilAddress = chipSize * 1024 * 1024; // number of bytes
+
+  const fpath = path.join(cwd, filename);
+  console.log(`** downloading to ${fpath}\n`);
 
   return esptool(
     [
@@ -52,15 +57,16 @@ function download(port, chipSize, filename, verbose = false) {
       'read_flash',
       '0',
       readUntilAddress,
-      filename
+      fpath
     ],
     verbose
   );
 }
 
 function upload(port, filename, verbose = false) {
+  const fpath = path.join(cwd, filename);
   return esptool(
-    [`--port=${port}`, `--baud=${writeBaud}`, 'write_flash', '0', filename],
+    [`--port=${port}`, `--baud=${writeBaud}`, 'write_flash', '0', fpath],
     verbose
   );
 }
